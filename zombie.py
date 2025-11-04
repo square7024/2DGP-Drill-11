@@ -59,3 +59,7 @@ class Zombie:
     def handle_event(self, event):
         pass
 
+    def handle_collision(self, group, other):
+        if group == 'boy:zombie':
+            pass
+
