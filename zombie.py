@@ -62,4 +62,6 @@ class Zombie:
     def handle_collision(self, group, other):
         if group == 'boy:zombie':
             pass
+        elif group == 'zombie:ball':
+            print("hit zombie")
 
