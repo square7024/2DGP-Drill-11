@@ -26,13 +26,27 @@ def init():
 
     grass = Grass()
     game_world.add_object(grass, 0)
+    game_world.add_collision_pair('grass:ball', grass, None)
 
     boy = Boy()
     game_world.add_object(boy, 1)
 
+    global balls
+    balls = [Ball(random.randint(100, 1500), 60, 0) for _ in range(30)]
+    game_world.add_objects(balls, 1)
+
+    # 소년과 볼 사이에 대한 충돌검사가 필요하다는 정보를 추가.
+    game_world.add_collision_pair('boy:ball', boy, None)
+    for ball in balls:
+        game_world.add_collision_pair('boy:ball', None, ball)
+
+    zombies = [Zombie() for _ in range(4)]
+    game_world.add_objects(zombies, 1)
+
 
 def update():
     game_world.update()
+    game_world.handle_collision()
 
 
 def draw():
