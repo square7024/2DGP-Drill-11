@@ -33,6 +33,7 @@ class Zombie:
         self.load_images()
         self.frame = random.randint(0, 9)
         self.dir = random.choice([-1,1])
+        self.life = 2
 
 
     def get_bb(self):
@@ -64,4 +65,7 @@ class Zombie:
             pass
         elif group == 'zombie:ball':
             print("hit zombie")
+            self.life -= 1
+            if self.life == 0:
+                game_world.remove_object(self)
 
