@@ -66,7 +66,7 @@ class Zombie:
         elif group == 'zombie:ball':
             print("hit zombie")
             self.life -= 1
-            self.y -= self.y - (self.life * 100)
+            self.y = self.y - (self.life * 50)
             if self.life == 0:
                 game_world.remove_object(self)
 
